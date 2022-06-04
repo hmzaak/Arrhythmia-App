@@ -1,3 +1,4 @@
+import 'package:arrhythmia/screens/classify_screen.dart';
 import 'package:arrhythmia/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +43,9 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(ClassifyScreen.routName);
+            },
             icon: const Icon(Icons.upload_file),
             label: const Text('Classify'),
             style: ElevatedButton.styleFrom(

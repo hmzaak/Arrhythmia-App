@@ -1,4 +1,5 @@
 import 'package:arrhythmia/screens/arrhythmia_screen.dart';
+import 'package:arrhythmia/screens/classify_screen.dart';
 import 'package:arrhythmia/screens/home_screen.dart';
 import 'package:arrhythmia/screens/types_screen.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       routes: {
         ArrhythmiaScreen.routName: (context) => const ArrhythmiaScreen(),
         TypesScreen.routName: (context) => const TypesScreen(),
+        ClassifyScreen.routName: (context) => const ClassifyScreen(),
       },
     );
   }
