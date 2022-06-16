@@ -1,11 +1,8 @@
 import 'package:arrhythmia/screens/classify_screen.dart';
 import 'package:arrhythmia/tflite/classifier.dart';
 import 'package:arrhythmia/widgets/app_drawer.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
-import 'dart:convert' show utf8;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -78,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           TextField(
+            maxLines: 5,
             decoration: const InputDecoration(
               hintText: 'Paste ECG values here',
             ),
@@ -98,8 +96,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 return;
               }
               final prediction = _classifier.classify(ecg.text);
-              print('Result: $prediction');
-              //Navigator.of(context).pushNamed(ClassifyScreen.routName);
+              var maxVal = 0.0;
+              for (int i = 0; i < prediction[0].length; i++) {
+                if (prediction[0][i] > maxVal) {
+                  maxVal = prediction[0][i];
+                }
+              }
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (ctx) =>
+                      ClassifyScreen(index: prediction[0].indexOf(maxVal))));
             },
             icon: const Icon(Icons.upload_file),
             label: const Text('Classify'),
