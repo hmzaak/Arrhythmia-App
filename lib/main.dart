@@ -1,4 +1,5 @@
 import 'package:arrhythmia/screens/arrhythmia_screen.dart';
+import 'package:arrhythmia/screens/edit_screen.dart';
 import 'package:arrhythmia/screens/home_screen.dart';
 import 'package:arrhythmia/screens/splash_screen.dart';
 import 'package:arrhythmia/screens/types_screen.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         ArrhythmiaScreen.routName: (context) => ArrhythmiaScreen(),
         TypesScreen.routName: (context) => TypesScreen(),
         HomeScreen.routname: (context) => const HomeScreen(),
+        EditScreen.routname: (context) => EditScreen(),
       },
     );
   }

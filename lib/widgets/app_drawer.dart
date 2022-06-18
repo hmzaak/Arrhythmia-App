@@ -1,4 +1,5 @@
 import 'package:arrhythmia/screens/arrhythmia_screen.dart';
+import 'package:arrhythmia/screens/edit_screen.dart';
 import 'package:arrhythmia/screens/home_screen.dart';
 import 'package:arrhythmia/screens/types_screen.dart';
 import 'package:flutter/material.dart';
@@ -62,6 +63,17 @@ class AppDrawer extends StatelessWidget {
             title: const Text('Types'),
             onTap: () {
               Navigator.of(context).pushReplacementNamed(TypesScreen.routName);
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const FaIcon(
+              FontAwesomeIcons.pen,
+              color: Colors.red,
+            ),
+            title: const Text('Edit'),
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed(EditScreen.routname);
             },
           ),
           const Divider(),
