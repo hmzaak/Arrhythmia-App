@@ -78,9 +78,11 @@ class _HomeScreenState extends State<HomeScreen> {
             maxLines: 5,
             decoration: const InputDecoration(
               hintText: 'Paste ECG values here',
+              contentPadding: EdgeInsets.only(left: 10),
             ),
             controller: ecg,
           ),
+          const SizedBox(height: 30),
           ElevatedButton.icon(
             onPressed: () {
               if (ecg.text.isEmpty) {
@@ -102,11 +104,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   maxVal = prediction[0][i];
                 }
               }
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (ctx) =>
-                      ClassifyScreen(index: prediction[0].indexOf(maxVal))));
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (ctx) => ClassifyScreen(
+                    index: prediction[0].indexOf(maxVal),
+                  ),
+                ),
+              );
             },
-            icon: const Icon(Icons.upload_file),
+            icon: const Icon(Icons.wifi_protected_setup),
             label: const Text('Classify'),
             style: ElevatedButton.styleFrom(
               minimumSize: const Size(200, 40),

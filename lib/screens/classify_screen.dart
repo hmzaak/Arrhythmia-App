@@ -1,3 +1,4 @@
+import 'package:arrhythmia/screens/types_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:telephony/telephony.dart';
 
@@ -77,11 +78,17 @@ class _ClassifyScreenState extends State<ClassifyScreen> {
           height: 400,
           width: 300,
           child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, i) {
-                asyncInit();
+            itemCount: 5,
+            itemBuilder: (context, i) {
+              asyncInit();
 
-                return Container(
+              return InkWell(
+                onTap: () {
+                  i == widget.index
+                      ? Navigator.of(context).pushNamed(TypesScreen.routName)
+                      : null;
+                },
+                child: Container(
                   height: 50,
                   margin: const EdgeInsets.all(10),
                   padding: const EdgeInsets.all(15),
@@ -99,8 +106,10 @@ class _ClassifyScreenState extends State<ClassifyScreen> {
                       ),
                     ),
                   ),
-                );
-              }),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       ),
       home: const HomeScreen(),
       routes: {
-        ArrhythmiaScreen.routName: (context) => const ArrhythmiaScreen(),
-        TypesScreen.routName: (context) => const TypesScreen(),
+        ArrhythmiaScreen.routName: (context) => ArrhythmiaScreen(),
+        TypesScreen.routName: (context) => TypesScreen(),
         //ClassifyScreen.routName: (context) => const ClassifyScreen(),
       },
     );
