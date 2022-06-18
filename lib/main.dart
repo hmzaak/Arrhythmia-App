@@ -1,5 +1,6 @@
 import 'package:arrhythmia/screens/arrhythmia_screen.dart';
 import 'package:arrhythmia/screens/home_screen.dart';
+import 'package:arrhythmia/screens/splash_screen.dart';
 import 'package:arrhythmia/screens/types_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,13 +16,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: Color(0xFFD9494B),
+        ),
       ),
-      home: const HomeScreen(),
+      home: const SplashScreen(),
       routes: {
         ArrhythmiaScreen.routName: (context) => ArrhythmiaScreen(),
         TypesScreen.routName: (context) => TypesScreen(),
-        //ClassifyScreen.routName: (context) => const ClassifyScreen(),
+        HomeScreen.routname: (context) => const HomeScreen(),
       },
     );
   }

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const routname = '/home-page';
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -50,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Arrythmia Detection'),
+        title: const Text('Arrhythmia Detection'),
       ),
       drawer: const AppDrawer(),
       body: Column(
