@@ -40,6 +40,7 @@ dependencies:
   telephony: ^0.1.4
   font_awesome_flutter: ^10.1.0
   animated_splash_screen: ^1.2.0
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_test:

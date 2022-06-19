@@ -5,7 +5,14 @@ import 'package:telephony/telephony.dart';
 class ClassifyScreen extends StatefulWidget {
   static const routName = '/classify-screen';
   final int index;
-  const ClassifyScreen({Key? key, required this.index}) : super(key: key);
+  final String docNumber;
+  final String patientName;
+  const ClassifyScreen({
+    Key? key,
+    required this.index,
+    required this.docNumber,
+    required this.patientName,
+  }) : super(key: key);
 
   @override
   State<ClassifyScreen> createState() => _ClassifyScreenState();
@@ -33,9 +40,9 @@ class _ClassifyScreenState extends State<ClassifyScreen> {
       if (permissionsGranted == true) {
         try {
           telephony.sendSms(
-            to: '03014815847',
+            to: widget.docNumber,
             message:
-                "Detected ${types[widget.index]} in patient. Need your help!",
+                "Detected ${types[widget.index]} in patient(${widget.patientName}). Need your help!",
             // statusListener: (status) {
             //   switch (status) {
             //     case SendStatus.SENT:

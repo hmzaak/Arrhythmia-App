@@ -1,8 +1,12 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:arrhythmia/screens/classify_screen.dart';
 import 'package:arrhythmia/tflite/classifier.dart';
 import 'package:arrhythmia/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:path_provider/path_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routname = '/home-page';
@@ -15,10 +19,29 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late Classifier _classifier;
 
+  String doctorNumber = '';
+  String name = '';
+
+  Directory? tempDir;
+  File? jsonFile;
+  var data = {};
+
   @override
   void initState() {
+    asycInit();
     super.initState();
     _classifier = Classifier();
+  }
+
+  void asycInit() async {
+    tempDir = await getApplicationDocumentsDirectory();
+    String _numberPath = tempDir!.path + '/number.json';
+    jsonFile = File(_numberPath);
+    if (jsonFile!.existsSync()) {
+      data = json.decode(jsonFile!.readAsStringSync());
+    }
+    doctorNumber = data.isEmpty ? '' : data['number'];
+    name = data.isEmpty ? '' : data['name'];
   }
   // File? csvFile;
 
@@ -109,6 +132,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 MaterialPageRoute(
                   builder: (ctx) => ClassifyScreen(
                     index: prediction[0].indexOf(maxVal),
+                    docNumber: doctorNumber,
+                    patientName: name,
                   ),
                 ),
               );
