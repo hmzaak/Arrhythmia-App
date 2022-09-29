@@ -1,4 +1,4 @@
-# arrhythmia
+# A Flutter app to dectect arrhythmia
 
 A new Flutter project.
 
